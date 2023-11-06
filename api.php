@@ -29,23 +29,23 @@ $info = [
 if (isset($exchangeRate['currencies'][$info['source']]) == false) {
     echo json_encode([
         'status' => 'error',
-        'message' => 'source currency not found'
+        'message' => 'source currency not found',
     ]);
     exit;
 } else {
     if (isset($exchangeRate['currencies'][$info['target']]) == false) {
         echo json_encode([
             'status' => 'error',
-            'message' => 'target currency not found'
+            'message' => 'target currency not found',
         ]);
         exit;
     } else {
         $source = $exchangeRate['currencies'][$info['source']];
         $target = $exchangeRate['currencies'][$info['target']];
-        $amount = number_format(round($info['amount'] * $source[$info['target']], 2), 2);
+        $amount = round($info['amount'] * $source[$info['target']], 2);
         echo json_encode([
             'status' => 'success',
-            'amount' => $amount,
+            'amount' => number_format($amount, 2),
         ]);
         exit;
     }
