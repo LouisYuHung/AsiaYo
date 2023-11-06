@@ -41,7 +41,6 @@ if (isset($exchangeRate['currencies'][$info['source']]) == false) {
         exit;
     } else {
         $source = $exchangeRate['currencies'][$info['source']];
-        $target = $exchangeRate['currencies'][$info['target']];
         $amount = round($info['amount'] * $source[$info['target']], 2);
         echo json_encode([
             'status' => 'success',
